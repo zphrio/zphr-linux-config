@@ -73,7 +73,6 @@ if ! shopt -oq posix; then
 fi
 
 
-export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/zayed/.deno/bin:/home/zayed/.cargo/bin:/home/zayed/.local/bin:$PATH"
 
 source <(fzf --bash)
 
@@ -95,3 +94,10 @@ if command -v tmux &> /dev/null; then
 fi
 
 
+
+# PATH additions
+export PATH="/home/zayed/.local/bin:$PATH"        # local scripts
+export PATH="/home/zayed/.cargo/bin:$PATH"        # rust
+export PATH="/home/zayed/.deno/bin:$PATH"         # deno
+export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"  # homebrew
+export PATH="/home/zayed/.opencode/bin:$PATH"     # opencode
