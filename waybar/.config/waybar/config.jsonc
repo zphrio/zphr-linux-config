@@ -15,9 +15,9 @@
     "memory",
     "temperature",
     "pulseaudio",
-    "wireplumber#microphone",
-    "backlight",
-    "battery#bat2",
+    // "wireplumber#microphone",
+    // "backlight",
+    "battery",
     "tray",
     "power-profiles-daemon",
     "sway/language",
@@ -120,28 +120,31 @@
     "format-icons": [""]
   },
   "battery": {
+    "interval": 10,
     "states": {
-      // "good": 95,
+      "good": 80,
       "warning": 30,
       "critical": 15
     },
     "format": "{icon} {capacity}%",
-    "format-full": "{icon} {capacity}%",
+    "format-full": " Full",
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
     "format-alt": "{icon} {time}",
-    // "format-good": "", // An empty format will hide the module
-    // "format-full": "",
     "format-icons": [
       "",
       "",
       "",
       "",
       ""
-    ]
-  },
-  "battery#bat2": {
-    "bat": "BAT2"
+    ],
+    "tooltip": true,
+    "tooltip-format": "{timeTo}\nHealth: {health}%\nCycles: {cycles}",
+    "on-click-right": "notify-send 'Battery' \"$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E 'state|percentage|time|energy-rate')\"",
+    "events": {
+      "on-discharging-warning": "notify-send -u normal -i battery-low 'Low Battery' 'Below 30%'",
+      "on-discharging-critical": "notify-send -u critical -i battery-caution 'Critical Battery' 'Below 15%! Plug in!'"
+    }
   },
   "power-profiles-daemon": {
     "format": "{icon}",

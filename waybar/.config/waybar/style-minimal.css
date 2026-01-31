@@ -127,6 +127,14 @@ window#waybar.empty #window {
 }
 
 /* Battery */
+#battery.full {
+    color: @success;
+}
+
+#battery.good {
+    color: @text-primary;
+}
+
 #battery.charging {
     color: @success;
 }
