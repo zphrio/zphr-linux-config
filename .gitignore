@@ -1,1 +1,4 @@
 .idea/**
+sway/.config/sway/outputs
+sway/.config/sway/workspaces
+tmux/.config/tmux/plugins/
