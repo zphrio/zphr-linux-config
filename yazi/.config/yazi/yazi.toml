@@ -38,11 +38,15 @@ inkscape = [
 sxiv = [
   { run = 'cd "$(dirname "$1")" && n=0 && for f in *; do n=$((n+1)); [ "$f" = "$(basename "$1")" ] && break; done && sxiv -n "$n" -- *', orphan = true, desc = "View with sxiv" },
 ]
+calc = [
+  { run = 'libreoffice --calc "$@"', orphan = true, desc = "Open with LibreOffice Calc" },
+]
 
 [open]
 rules = [
   { url = "*/", use = ["edit", "open", "reveal"] },
   { url = "*.ai", use = ["inkscape", "open", "reveal"] },
+  { url = "*.csv", use = ["calc", "edit", "pager", "reveal"] },
   { mime = "text/*", use = ["edit", "pager", "reveal"] },
   { mime = "image/svg+xml", use = ["inkscape", "open", "edit", "reveal"] },
   { mime = "image/*", use = ["sxiv", "open", "reveal"] },
