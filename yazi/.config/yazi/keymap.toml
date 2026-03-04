@@ -1,0 +1,6 @@
+[mgr]
+prepend_keymap = [
+  # Go to zphr directories (g + z + ...)
+  { on = ["g", "z", "c"], run = "cd ~/zphr-linux-config",  desc = "Go to zphr-linux-config" },
+  { on = ["g", "z", "b"], run = "cd ~/zphr-second-brain",  desc = "Go to zphr-second-brain" },
+]
