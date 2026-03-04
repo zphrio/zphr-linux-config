@@ -12,6 +12,12 @@ marker_cut      = { fg = "#BF616A", bg = "#BF616A" }
 marker_marked   = { fg = "#88C0D0", bg = "#88C0D0" }
 marker_selected = { fg = "#EBCB8B", bg = "#EBCB8B" }
 
+[tabs]
+active   = { fg = "#2E3440", bg = "#81A1C1", bold = true }
+inactive = { fg = "#D8DEE9", bg = "#3B4252" }
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
 [mode]
 normal_main = { fg = "#2E3440", bg = "#81A1C1", bold = true }
 normal_alt  = { fg = "#81A1C1", bg = "#3B4252" }
