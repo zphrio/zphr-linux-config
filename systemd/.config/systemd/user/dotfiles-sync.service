@@ -1,0 +1,7 @@
+[Unit]
+Description=Pull dotfiles from remote
+
+[Service]
+Type=oneshot
+ExecStart=%h/zphr-linux-config/scripts/dotfiles-sync.sh
+Environment=DISPLAY=:0
