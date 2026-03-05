@@ -140,7 +140,7 @@ sudo apt install -y \
   grim \
   slurp \
   swappy \
-  hyprpicker \
+  # hyprpicker \
   tesseract-ocr \
   tesseract-ocr-ara \
   blueman \
