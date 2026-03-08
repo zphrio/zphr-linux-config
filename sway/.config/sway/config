@@ -60,8 +60,9 @@ bindsym $mod+space input "type:keyboard" xkb_switch_layout next
     bindsym $mod+a exec /home/zayed/zphr-linux-config/scripts/action.sh
     bindsym $mod+Shift+a exec swaymsg input type:keyboard xkb_switch_layout 0 && gtklock
 
-    # Start a terminal
-    bindsym $mod+t exec $term
+    # Terminal (tmux)
+    bindsym $mod+t exec kitty bash -c 'tmux attach || tmux new'
+    bindsym $mod+Shift+t exec kitty tmux new-session
 
     # Kill focused window
     bindsym $mod+q kill

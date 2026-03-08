@@ -94,11 +94,3 @@ export NVM_DIR="$HOME/.nvm"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/zayed/.sdkman"
 [[ -s "/home/zayed/.sdkman/bin/sdkman-init.sh" ]] && source "/home/zayed/.sdkman/bin/sdkman-init.sh"
-
-# Auto-start tmux only when using Kitty terminal
-if command -v tmux &> /dev/null; then
-  # Ensure we are in an interactive shell, not already in tmux, and inside Kitty
-  if [[ $- == *i* ]] && [ -z "$TMUX" ] && [[ "$TERM" == "xterm-kitty" ]]; then
-    tmux attach -t main || tmux new -s main
-  fi
-fi
