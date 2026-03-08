@@ -4,7 +4,7 @@ set -eo pipefail
 # Log all output to file and terminal
 exec > >(tee -a ~/log.txt) 2>&1
 
-REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+REPO_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
 
 section() {
   echo ""
