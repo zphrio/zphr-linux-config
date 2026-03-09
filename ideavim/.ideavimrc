@@ -22,8 +22,7 @@ set visualbell
 " Use system clipboard
 set clipboard+=unnamed
 
-let mapleader = "  "
-map <A-;> <leader>
+let mapleader = " "
 
 
 "" Plugin Settings
