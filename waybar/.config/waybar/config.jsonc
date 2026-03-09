@@ -189,6 +189,23 @@
     "format": " {}"
   },
   "sway/window": {
-    "format": "{app_id}"
+    "format": "{app_id}",
+    "rewrite": {
+      "app\\.zen_browser\\.zen": "Zen Browser",
+      "com\\.bambulab\\.BambuStudio": "Bambu Studio",
+      "com\\.discordapp\\.Discord": "Discord",
+      "com\\.getpostman\\.Postman": "Postman",
+      "com\\.github\\.tchx84\\.Flatseal": "Flatseal",
+      "com\\.slack\\.Slack": "Slack",
+      "com\\.ticktick\\.TickTick": "TickTick",
+      "com\\.usebruno\\.Bruno": "Bruno",
+      "com\\.visualstudio\\.code": "VS Code",
+      "io\\.dbeaver\\.DBeaverCommunity": "DBeaver",
+      "io\\.missioncenter\\.MissionCenter": "Mission Center",
+      "it\\.mijorus\\.gearlever": "Gear Lever",
+      "md\\.obsidian\\.Obsidian": "Obsidian",
+      "org\\.munadi\\.Munadi": "Munadi",
+      "org\\.telegram\\.desktop": "Telegram"
+    }
   }
 }
