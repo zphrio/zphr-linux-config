@@ -135,6 +135,7 @@ sudo apt install -y \
   fuzzel \
   fzf \
   fastfetch \
+  fd-find \
   copyq \
   curl \
   grim \
@@ -150,7 +151,6 @@ sudo apt install -y \
   git \
   kitty \
   mpv \
-  neovim \
   qbittorrent \
   ranger \
   resvg \
@@ -240,7 +240,7 @@ if ! command -v brew &> /dev/null; then
   NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
-brew install jesseduffield/lazydocker/lazydocker yazi
+brew install jesseduffield/lazydocker/lazydocker neovim yazi
 
 section "Dotfiles"
 rm -f "$HOME/.bashrc"
