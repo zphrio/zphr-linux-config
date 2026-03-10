@@ -74,7 +74,7 @@ bindsym $mod+space input "type:keyboard" xkb_switch_layout next
     # bindsym $mod+Tab exec "wofi --show drun"
 
     # Screenshot
-    bindsym $mod+w exec bash -c 'region=$(slurp) && sleep 1 && grim -g "$region" - | swappy -f -'
+    bindsym $mod+w exec bash -c 'grim /tmp/_screenshot.png && convert /tmp/_screenshot.png -crop "$(slurp | sed "s/\(.*\),\(.*\) \(.*\)/\3+\1+\2/")" +repage - | swappy -f - && rm /tmp/_screenshot.png'
 
     # OCR Screenshot (select region, extract text to clipboard)
     bindsym $mod+Shift+w exec bash -c 'text=$(grim -g "$(slurp)" - | tesseract stdin stdout -l ara+eng 2>/dev/null); echo -n "$text" | wl-copy; notify-send "OCR Result" "$text"'

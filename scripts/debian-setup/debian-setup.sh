@@ -139,6 +139,7 @@ sudo apt install -y \
   copyq \
   curl \
   grim \
+  imagemagick \
   slurp \
   swappy \
   tesseract-ocr \
