@@ -21,7 +21,7 @@ image_quality = 75
 
 [opener]
 edit = [
-  { run = 'vim "$@"', block = true, desc = "Edit with Vim" },
+  { run = 'nvim "$@"', block = true, desc = "Edit with Neovim" },
 ]
 open = [
   { run = 'xdg-open "$@"', orphan = true, desc = "Open" },
