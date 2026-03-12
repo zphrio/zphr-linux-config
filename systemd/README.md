@@ -10,9 +10,10 @@ Without `--no-folding`, stow symlinks the entire `~/.config/systemd` directory i
 
 With `--no-folding`, stow creates real directories and only symlinks the individual unit files, keeping the repo clean.
 
-## Enable the timer
+## Enable the timers
 
 ```bash
 systemctl --user daemon-reload
 systemctl --user enable --now dotfiles-sync.timer
+systemctl --user enable --now zphr-second-brain-backup.timer
 ```

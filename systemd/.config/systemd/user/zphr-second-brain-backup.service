@@ -1,0 +1,6 @@
+[Unit]
+Description=Backup zphr-second-brain vault
+
+[Service]
+Type=oneshot
+ExecStart=%h/zphr-linux-config/scripts/zphr-second-brain-backup.sh
