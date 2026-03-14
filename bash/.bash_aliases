@@ -16,10 +16,11 @@ alias q='apt search'
 alias i='sudo apt install -y'
 alias u='sudo apt update && sudo apt upgrade -y && brew update && brew upgrade && flatpak update -y'
 
-# Flatpak alisases
+# Flatpak aliases
 alias fp='flatpak'
 alias fpq='flatpak search'
 alias fpi='flatpak install'
+alias code='flatpak run com.visualstudio.code'
 
 # Tools
 alias lg='lazygit'
