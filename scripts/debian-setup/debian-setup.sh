@@ -250,6 +250,7 @@ for app in bash fuzzel gtklock ideavim mimeapps swappy sway tmux vim waybar yazi
   stow "$app"
 done
 stow --no-folding kitty systemd
+kitten theme --reload-in=all Dracula
 
 section "Dotfiles Sync"
 systemctl --user daemon-reload
