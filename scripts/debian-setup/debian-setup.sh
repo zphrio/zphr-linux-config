@@ -233,7 +233,6 @@ flatpak install -y --user \
   io.dbeaver.DBeaverCommunity \
   it.mijorus.gearlever \
   md.obsidian.Obsidian \
-  org.munadi.Munadi \
   org.telegram.desktop
 
 section "Homebrew"

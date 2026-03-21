@@ -240,6 +240,5 @@ exec lxpolkit
 exec nm-applet --indicator
 exec_always bash -c "killall -q swaync: while pgrep -x swaync >/dev/null; do sleep 0.1; done; swaync -c"
 exec copyq --start-server
-exec_always bash -c "flatpak run org.munadi.Munadi &"
 exec_always bash -c "pkill waybar; waybar &"
 exec kdeconnect-indicator
