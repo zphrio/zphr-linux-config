@@ -1,7 +1,11 @@
 [Default Applications]
+
+# Browser
 x-scheme-handler/http=app.zen_browser.zen.desktop
 x-scheme-handler/https=app.zen_browser.zen.desktop
 x-scheme-handler/chrome=app.zen_browser.zen.desktop
+x-scheme-handler/about=app.zen_browser.zen.desktop
+x-scheme-handler/unknown=app.zen_browser.zen.desktop
 text/html=app.zen_browser.zen.desktop
 application/x-extension-htm=app.zen_browser.zen.desktop
 application/x-extension-html=app.zen_browser.zen.desktop
@@ -9,7 +13,24 @@ application/x-extension-shtml=app.zen_browser.zen.desktop
 application/xhtml+xml=app.zen_browser.zen.desktop
 application/x-extension-xhtml=app.zen_browser.zen.desktop
 application/x-extension-xht=app.zen_browser.zen.desktop
+
+# JetBrains
 x-scheme-handler/jetbrains=jetbrainsd.desktop
-x-scheme-handler/about=app.zen_browser.zen.desktop
-x-scheme-handler/unknown=app.zen_browser.zen.desktop
+
+# PDF
 application/pdf=org.pwmt.zathura.desktop
+
+# Images
+image/png=sxiv.desktop
+image/jpeg=sxiv.desktop
+image/gif=sxiv.desktop
+image/webp=sxiv.desktop
+image/bmp=sxiv.desktop
+image/tiff=sxiv.desktop
+
+# Audio
+audio/mpeg=mpv.desktop
+audio/flac=mpv.desktop
+audio/ogg=mpv.desktop
+audio/wav=mpv.desktop
+audio/opus=mpv.desktop
