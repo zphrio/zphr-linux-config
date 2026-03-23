@@ -101,9 +101,7 @@ let g:WhichKeyDesc_goto_test = "<leader>gt Go to Test"
 
 let g:WhichKeyDesc_git = "<leader>v Git operations"
 
-let g:WhichKeyDesc_errors = "<leader>e Error navigation"
-let g:WhichKeyDesc_errors_next = "<leader>en Go to next error in solution"
-let g:WhichKeyDesc_errors_prev = "<leader>ep Go to previous error in solution"
+let g:WhichKeyDesc_explorer = "<leader>e Reveal file in explorer"
 
 
 "" Key mappings
@@ -168,9 +166,6 @@ map <leader>rf <Action>(IntroduceField)
 map <leader>rs <Action>(ChangeSignature)
 map <leader>rr <Action>(Refactorings.QuickListPopupAction)
 
-" Project navigation
-map <leader>pp <Action>(SelectInProjectView)
-
 " Go to code
 nmap <leader>gd <Action>(GotoDeclaration)
 nmap <leader>gy <Action>(GotoTypeDeclaration)
@@ -187,9 +182,28 @@ map <leader>vr <Action>(Vcs.RollbackChangedLines)
 map <leader>vb :action Annotate<CR>
 map <leader>vi <Action>(ToggleLineBreakpoint)
 
-" Errors
-"map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
-map <leader>ep <Action>(ShowErrorDescription)
+"" NERDTree
+"" ========================================================
+" Toggle file explorer
+map <leader>e :NERDTreeFind<CR>
+
+
+" NERDTree keys (active inside the tree panel):
+" o     - Open file/directory
+" go    - Preview file (cursor stays in tree)
+" s     - Open in vertical split
+" i     - Open in horizontal split
+" t / T - Open in new tab (T keeps focus on tree)
+" x     - Close parent directory
+" O / X - Recursively open/close directories
+" P     - Jump to root node
+" p     - Jump to parent
+" J / K - Jump to last/first sibling
+" n / N - Create new file / directory
+" d     - Delete file/directory
+" m     - Open context menu
+" q     - Close the tree
+" A     - Maximize/minimize the tree
 
 "" Use shift + h and shift + l to move back and Forward like the browser
 nmap <leader>h <Action>(Back)
@@ -197,13 +211,9 @@ nmap <leader>l <Action>(Forward)
 
 "" Debugging
 map <leader>db <Action>(ToggleLineBreakpoint)
-ap <leader>dd <Action>(DebugClass)
+map <leader>dd <Action>(DebugClass)
 map <leader>ds <Action>(StepOver)
 map <leader>de <Action>(EvaluateExpression)
-
-"" New File
-map <leader>nn <Action>(NewFile)
-map <leader>ns <Action>(NewScratchFile)
 
 nmap \s <Action>(SaveAll)
 nmap \p <Action>(ParameterInfo)
