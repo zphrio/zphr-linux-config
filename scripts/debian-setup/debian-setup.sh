@@ -94,13 +94,13 @@ fi
 # Griffo repo (yazi, lazydocker, lazygit)
 if [ ! -f /etc/apt/sources.list.d/griffo.sources ]; then
   echo "Adding Griffo repository..."
-  wget -q https://debian.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc -O- | sudo gpg --dearmor --yes -o /etc/apt/keyrings/griffo.gpg
+  wget -q https://debian.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc -O- | sudo tee /etc/apt/keyrings/griffo.asc > /dev/null
   sudo tee /etc/apt/sources.list.d/griffo.sources <<EOF
 Types: deb
 URIs: https://debian.griffo.io/apt
 Suites: $(lsb_release -sc)
 Components: main
-Signed-By: /etc/apt/keyrings/griffo.gpg
+Signed-By: /etc/apt/keyrings/griffo.asc
 EOF
 fi
 
