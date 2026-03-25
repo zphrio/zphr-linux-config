@@ -32,6 +32,33 @@ Components: main contrib non-free non-free-firmware
 EOF
 fi
 
+# GitHub CLI repo
+if [ ! -f /etc/apt/sources.list.d/github-cli.sources ]; then
+  echo "Adding GitHub CLI repository..."
+  wget -q https://cli.github.com/packages/githubcli-archive-keyring.gpg -O- | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null
+  sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg
+  sudo tee /etc/apt/sources.list.d/github-cli.sources <<EOF
+Types: deb
+URIs: https://cli.github.com/packages/
+Suites: stable
+Components: main
+Signed-By: /etc/apt/keyrings/githubcli-archive-keyring.gpg
+EOF
+fi
+
+# Syncthing repo
+if [ ! -f /etc/apt/sources.list.d/syncthing.sources ]; then
+  echo "Adding Syncthing repository..."
+  sudo curl -sL -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+  sudo tee /etc/apt/sources.list.d/syncthing.sources <<EOF
+Types: deb
+URIs: https://apt.syncthing.net/
+Suites: syncthing
+Components: stable-v2
+Signed-By: /etc/apt/keyrings/syncthing-archive-keyring.gpg
+EOF
+fi
+
 # Firefox repo
 if [ ! -f /etc/apt/sources.list.d/mozilla.sources ]; then
   echo "Adding Firefox repository..."
@@ -61,6 +88,19 @@ URIs: https://packagecloud.io/filips/FirefoxPWA/any/
 Suites: any
 Components: main
 Signed-By: /usr/share/keyrings/firefoxpwa-keyring.gpg
+EOF
+fi
+
+# Griffo repo (yazi, lazydocker, lazygit)
+if [ ! -f /etc/apt/sources.list.d/griffo.sources ]; then
+  echo "Adding Griffo repository..."
+  curl -sS https://debian.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc | sudo gpg --dearmor --yes -o /etc/apt/keyrings/griffo.gpg
+  sudo tee /etc/apt/sources.list.d/griffo.sources <<EOF
+Types: deb
+URIs: https://debian.griffo.io/apt
+Suites: $(lsb_release -sc)
+Components: main
+Signed-By: /etc/apt/keyrings/griffo.gpg
 EOF
 fi
 
@@ -131,6 +171,8 @@ sudo apt install -y \
   lazygit \
   syncthing \
   btop \
+  lazydocker \
+  yazi \
   galculator \
   fuzzel \
   fzf \
@@ -153,7 +195,6 @@ sudo apt install -y \
   kitty \
   mpv \
   qbittorrent \
-  ranger \
   resvg \
   sqlite3 \
   stow \
@@ -240,7 +281,7 @@ if ! command -v brew &> /dev/null; then
   NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
-brew install jesseduffield/lazydocker/lazydocker neovim yazi
+brew install neovim
 
 section "Dotfiles"
 rm -f "$HOME/.bashrc"
