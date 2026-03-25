@@ -248,7 +248,7 @@ cd "$REPO_DIR"
 for app in bash fuzzel gtklock ideavim mimeapps swappy sway tmux vim waybar yazi; do
   stow "$app"
 done
-stow --no-folding kitty systemd
+stow --no-folding btop kitty systemd
 kitten theme --reload-in=all Dracula
 
 section "Dotfiles Sync"
