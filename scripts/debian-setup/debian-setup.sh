@@ -49,7 +49,7 @@ fi
 # Syncthing repo
 if [ ! -f /etc/apt/sources.list.d/syncthing.sources ]; then
   echo "Adding Syncthing repository..."
-  sudo curl -sL -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+  wget -q https://syncthing.net/release-key.gpg -O- | sudo tee /etc/apt/keyrings/syncthing-archive-keyring.gpg > /dev/null
   sudo tee /etc/apt/sources.list.d/syncthing.sources <<EOF
 Types: deb
 URIs: https://apt.syncthing.net/
@@ -94,7 +94,7 @@ fi
 # Griffo repo (yazi, lazydocker, lazygit)
 if [ ! -f /etc/apt/sources.list.d/griffo.sources ]; then
   echo "Adding Griffo repository..."
-  curl -sS https://debian.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc | sudo gpg --dearmor --yes -o /etc/apt/keyrings/griffo.gpg
+  wget -q https://debian.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc -O- | sudo gpg --dearmor --yes -o /etc/apt/keyrings/griffo.gpg
   sudo tee /etc/apt/sources.list.d/griffo.sources <<EOF
 Types: deb
 URIs: https://debian.griffo.io/apt
