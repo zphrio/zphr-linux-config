@@ -35,6 +35,9 @@ pager = [
 inkscape = [
   { run = 'inkscape "$@"', orphan = true, desc = "Edit with Inkscape" },
 ]
+zathura = [
+  { run = 'zathura "$@"', orphan = true, desc = "Open with Zathura" },
+]
 okular = [
   { run = 'okular "$@"', orphan = true, desc = "Open with Okular" },
 ]
@@ -51,7 +54,7 @@ rules = [
   { mime = "inode/x-empty", use = ["edit", "reveal"] },
   { mime = "application/json", use = ["edit", "pager", "reveal"] },
   { mime = "application/x-*", use = ["open", "reveal"] },
-  { mime = "application/pdf", use = ["okular", "open", "reveal"] },
+  { mime = "application/pdf", use = ["zathura", "okular", "open", "reveal"] },
   { mime = "*", use = ["open", "reveal"] },
 ]
 
