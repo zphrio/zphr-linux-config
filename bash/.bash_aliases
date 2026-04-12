@@ -29,7 +29,9 @@ alias z='zellij'
 alias jb='jbang'
 alias fd='fdfind'
 alias ff='fastfetch'
-alias cc='claude'
+alias cc='claude --dangerously-skip-permissions'
+alias ccr='claude --resume'
+alias ccu='claude update'
 alias oc='opencode'
 
 # Yazi - cd to directory on exit
