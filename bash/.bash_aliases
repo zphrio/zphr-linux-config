@@ -30,7 +30,7 @@ alias jb='jbang'
 alias fd='fdfind'
 alias ff='fastfetch'
 alias cc='claude --dangerously-skip-permissions'
-alias ccr='claude --resume'
+alias ccr='claude --dangerously-skip-permissions --resume'
 alias ccu='claude update'
 alias oc='opencode'
 
