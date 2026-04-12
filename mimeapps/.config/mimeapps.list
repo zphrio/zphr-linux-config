@@ -34,3 +34,6 @@ audio/flac=mpv.desktop
 audio/ogg=mpv.desktop
 audio/wav=mpv.desktop
 audio/opus=mpv.desktop
+
+# Claude Code
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop
