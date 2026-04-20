@@ -46,6 +46,7 @@ okular = [
 rules = [
   { url = "*/", use = ["edit", "open", "reveal"] },
   { url = "*.ai", use = ["inkscape", "open", "reveal"] },
+  { url = "*.json", use = ["edit", "pager", "reveal"] },
   { mime = "text/*", use = ["edit", "pager", "reveal"] },
   { mime = "image/svg+xml", use = ["inkscape", "open", "edit", "reveal"] },
   { mime = "image/*", use = ["open", "reveal"] },
