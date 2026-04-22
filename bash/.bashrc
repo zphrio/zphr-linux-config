@@ -86,9 +86,24 @@ $PATH"
 
 source <(fzf --bash)
 
+# nvm — lazy-loaded. Pre-seed PATH with the default node so node/npm/npx
+# are instant; only `nvm` itself triggers sourcing the 4.6k-line nvm.sh.
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -d "$NVM_DIR/versions/node" ]; then
+    _nvm_default=$(cat "$NVM_DIR/alias/default" 2>/dev/null)
+    if [ -z "$_nvm_default" ] || [ ! -d "$NVM_DIR/versions/node/$_nvm_default" ]; then
+        _nvm_default=$(ls -1 "$NVM_DIR/versions/node" 2>/dev/null | sort -V | tail -1)
+    fi
+    [ -n "$_nvm_default" ] && PATH="$NVM_DIR/versions/node/$_nvm_default/bin:$PATH"
+    unset _nvm_default
+fi
+
+nvm() {
+    unset -f nvm
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    nvm "$@"
+}
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
