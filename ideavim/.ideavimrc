@@ -17,6 +17,8 @@ set smartcase
 set incsearch
 set hlsearch
 
+set VimEverywhere
+
 set visualbell
 
 " Use system clipboard
@@ -47,7 +49,7 @@ let g:WhichKey_SortOrder = "by_key_prefix_first"
 
 let g:WhichKeyDesc_leader = "<leader> Leader key"
 
-let g:WhichKeyDesc_leader = "<leader>x Close Current File"
+let g:WhichKeyDesc_close = "<leader>x Close Current File"
 
 let g:WhichKeyDesc_easymotion = "<leader>j Jump with Easymotion"
 let g:WhichKeyDesc_easymotion_prefix = "<leader><leader>"
