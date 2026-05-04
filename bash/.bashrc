@@ -1,6 +1,10 @@
 # Vim for the command line
 set -o vi
 
+# Editor — used by `Esc v` to edit the current command, and by git, etc.
+export EDITOR=nvim
+export VISUAL=nvim
+
 # PS1 Style
 if [ -n "$SSH_CONNECTION" ]; then
   # Remote (SSH) — red hostname
