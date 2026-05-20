@@ -62,55 +62,43 @@ rules = [
 [input]
 cursor_blink = true
 
-  [input.cd]
-  origin  = "top-center"
-  offset  = [0, 2, 50, 3]
+cd_origin     = "top-center"
+cd_offset     = [0, 2, 50, 3]
 
-  [input.create]
-  origin  = "top-center"
-  offset  = [0, 2, 50, 3]
+create_origin = "top-center"
+create_offset = [0, 2, 50, 3]
 
-  [input.rename]
-  origin  = "hovered"
-  offset  = [0, 1, 50, 3]
+rename_origin = "hovered"
+rename_offset = [0, 1, 50, 3]
 
-  [input.filter]
-  origin  = "top-center"
-  offset  = [0, 2, 50, 3]
+filter_origin = "top-center"
+filter_offset = [0, 2, 50, 3]
 
-  [input.find]
-  origin  = "top-center"
-  offset  = [0, 2, 50, 3]
+find_origin   = "top-center"
+find_offset   = [0, 2, 50, 3]
 
-  [input.search]
-  origin  = "top-center"
-  offset  = [0, 2, 50, 3]
+search_origin = "top-center"
+search_offset = [0, 2, 50, 3]
 
-  [input.shell]
-  origin  = "top-center"
-  offset  = [0, 2, 50, 3]
+shell_origin  = "top-center"
+shell_offset  = [0, 2, 50, 3]
 
 [confirm]
-  [confirm.trash]
-  origin  = "center"
-  offset  = [0, 0, 70, 20]
+trash_origin     = "center"
+trash_offset     = [0, 0, 70, 20]
 
-  [confirm.delete]
-  origin  = "center"
-  offset  = [0, 0, 70, 20]
+delete_origin    = "center"
+delete_offset    = [0, 0, 70, 20]
 
-  [confirm.overwrite]
-  origin  = "center"
-  offset  = [0, 0, 50, 15]
+overwrite_origin = "center"
+overwrite_offset = [0, 0, 50, 15]
 
-  [confirm.quit]
-  origin  = "center"
-  offset  = [0, 0, 50, 15]
+quit_origin      = "center"
+quit_offset      = [0, 0, 50, 15]
 
 [pick]
-  [pick.open]
-  origin  = "hovered"
-  offset  = [0, 1, 50, 25]
+open_origin = "hovered"
+open_offset = [0, 1, 50, 25]
 
 [which]
 sort_by       = "none"

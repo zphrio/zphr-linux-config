@@ -1,11 +1,12 @@
 [mgr]
 cwd = { fg = "#88C0D0" }
 
-hovered         = { reversed = true }
-preview_hovered = { underline = true }
-
 find_keyword  = { fg = "#EBCB8B", bold = true, italic = true, underline = true }
 find_position = { fg = "#D08770", bg = "reset", bold = true, italic = true }
+
+[indicator]
+current = { reversed = true }
+preview = { underline = true }
 
 marker_copied   = { fg = "#A3BE8C", bg = "#A3BE8C" }
 marker_cut      = { fg = "#BF616A", bg = "#BF616A" }
@@ -88,21 +89,21 @@ title_error = { fg = "#BF616A" }
 [filetype]
 rules = [
   # Directories
-  { name = "*/", fg = "#81A1C1", bold = true },
+  { url = "*/", fg = "#81A1C1", bold = true },
 
   # Executables
-  { is = "exec", fg = "#A3BE8C" },
+  { url = "*", is = "exec", fg = "#A3BE8C" },
 
   # Symlinks
-  { is = "link", fg = "#88C0D0", italic = true },
-  { is = "orphan", fg = "#BF616A", italic = true },
+  { url = "*", is = "link", fg = "#88C0D0", italic = true },
+  { url = "*", is = "orphan", fg = "#BF616A", italic = true },
 
   # Special files
-  { is = "block", fg = "#D08770" },
-  { is = "char", fg = "#D08770" },
-  { is = "fifo", fg = "#D08770" },
-  { is = "sock", fg = "#D08770" },
-  { is = "sticky", fg = "#EBCB8B" },
+  { url = "*", is = "block", fg = "#D08770" },
+  { url = "*", is = "char", fg = "#D08770" },
+  { url = "*", is = "fifo", fg = "#D08770" },
+  { url = "*", is = "sock", fg = "#D08770" },
+  { url = "*", is = "sticky", fg = "#EBCB8B" },
 
   # Media
   { mime = "image/*", fg = "#B48EAD" },
