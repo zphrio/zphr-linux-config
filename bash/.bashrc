@@ -116,3 +116,6 @@ nvm() {
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/zayed/.sdkman"
 [[ -s "/home/zayed/.sdkman/bin/sdkman-init.sh" ]] && source "/home/zayed/.sdkman/bin/sdkman-init.sh"
+
+# 1Password CLI plugins
+source /home/zayed/.config/op/plugins.sh
