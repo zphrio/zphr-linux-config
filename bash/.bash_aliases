@@ -14,7 +14,7 @@ man() {
 # apt aliases
 alias q='apt search'
 alias i='sudo apt install -y'
-alias u='sudo apt update && sudo apt upgrade -y && brew update && brew upgrade && flatpak update -y'
+alias u='sudo apt update && sudo apt upgrade -y && brew update && HOMEBREW_NO_ASK=1 brew upgrade && flatpak update -y'
 
 # Flatpak aliases
 alias fp='flatpak'
