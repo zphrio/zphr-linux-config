@@ -33,10 +33,8 @@ output DP-3 mode 5120x1440@164.999Hz pos 0 0
 # see ~/.config/kanshi/config
 exec kanshi
 
-# Workspace-to-output assignments maintained by nwg-displays.
 # Do NOT include ~/.config/sway/outputs — kanshi owns output config,
-# and that file contains a stale "disable" for the laptop panel.
-include ~/.config/sway/workspaces
+# and that file can contain stale monitor state.
 
 ### Idle configuration
 # Lock after 5 min idle, lock before sleep/hibernate
@@ -244,7 +242,7 @@ for_window [app_id="kitty"] move scratchpad, scratchpad show
 
 exec lxpolkit
 exec nm-applet --indicator
-exec_always bash -c "killall -q swaync: while pgrep -x swaync >/dev/null; do sleep 0.1; done; swaync -c"
+exec_always bash -c "killall -q swaync; while pgrep -x swaync >/dev/null; do sleep 0.1; done; swaync"
 exec copyq --start-server
 exec_always bash -c "pkill waybar; waybar &"
 exec kdeconnect-indicator
