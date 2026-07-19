@@ -69,14 +69,14 @@ bindsym $mod+space input "type:keyboard" xkb_switch_layout next
     # Terminal
     bindsym $mod+t exec kitty
 
+    # Terminal with yazi file manager
+    bindsym $mod+Shift+t exec kitty yazi
+
     # Kill focused window
     bindsym $mod+q kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
-
-    # Switch Windows
-    # bindsym $mod+Tab exec "wofi --show drun"
 
     # Screenshot
     bindsym $mod+w exec bash -c 'grim /tmp/_screenshot.png && convert /tmp/_screenshot.png -crop "$(slurp | sed "s/\(.*\),\(.*\) \(.*\)/\3+\1+\2/")" +repage - | swappy -f - && rm /tmp/_screenshot.png'
