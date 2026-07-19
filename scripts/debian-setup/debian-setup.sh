@@ -185,6 +185,7 @@ sudo apt install -y \
   imagemagick \
   slurp \
   swappy \
+  hyprpicker \
   tesseract-ocr \
   tesseract-ocr-ara \
   blueman \
