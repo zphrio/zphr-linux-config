@@ -29,8 +29,14 @@ client.urgent           #ff5555   #ff5555     #ffffff  #ff5555    #ff5555
 # PC Display (Ultrawide)
 output DP-3 mode 5120x1440@164.999Hz pos 0 0
 
-# Laptop Display
-#output eDP-1 mode 1920x1080@60Hz pos 0 0 scale 1.2
+# Laptop + external monitor hotplug profiles are managed by kanshi,
+# see ~/.config/kanshi/config
+exec kanshi
+
+# Workspace-to-output assignments maintained by nwg-displays.
+# Do NOT include ~/.config/sway/outputs — kanshi owns output config,
+# and that file contains a stale "disable" for the laptop panel.
+include ~/.config/sway/workspaces
 
 ### Idle configuration
 # Lock after 5 min idle, lock before sleep/hibernate

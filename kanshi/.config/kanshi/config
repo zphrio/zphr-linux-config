@@ -1,0 +1,33 @@
+# Monitor profiles applied automatically by kanshi on connect/disconnect.
+#
+# Matching (verified against kanshi source): kanshi applies the FIRST profile
+# whose listed outputs EXACTLY equal the connected outputs — the count must
+# match and every listed output must be present. So put specific profiles
+# BEFORE the generic wildcard fallback.
+#
+# Every profile lists the laptop panel ("BOE 0x094C Unknown"), so none of them
+# can ever match on the desktop PC (it has no such panel) — kanshi is a no-op
+# there and the PC keeps its static `output DP-3` config from the sway config.
+#
+# Debian's kanshi ships no kanshictl; after editing, restart it:
+#   pkill kanshi; swaymsg exec kanshi
+
+# --- Undocked: laptop panel only -------------------------------------------
+profile laptop {
+    output "BOE 0x094C Unknown" enable mode 1920x1200@60.003Hz position 0,0 scale 1.0
+}
+
+# --- Docked to ANY single external -----------------------------------------
+# BenQ, a monitor at work, a TV, a projector — whatever. The laptop panel
+# turns off and the external becomes the only screen at its preferred mode.
+# kanshi forces the "*" line to be matched last, so the specific "BOE" line
+# claims the laptop head and "*" claims the external.
+profile docked {
+    output "BOE 0x094C Unknown" disable
+    output "*" enable position 0,0
+}
+
+# Note: these cover the laptop plus exactly ONE external. If you ever run two
+# externals at once (3 screens total) kanshi finds no matching profile and
+# leaves the screens untouched — arrange it in nwg-displays and add a profile
+# here listing all three outputs.

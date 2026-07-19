@@ -146,6 +146,7 @@ sudo apt install -y \
   qt6-wayland \
   obs-studio \
   nwg-displays \
+  kanshi \
   nwg-look \
   network-manager-gnome \
   lxpolkit \
@@ -286,7 +287,7 @@ brew install neovim
 section "Dotfiles"
 rm -f "$HOME/.bashrc"
 cd "$REPO_DIR"
-for app in bash fuzzel gtklock ideavim mimeapps swappy sway tmux vim waybar yazi; do
+for app in bash fuzzel gtklock ideavim kanshi mimeapps swappy sway tmux vim waybar yazi; do
   stow "$app"
 done
 stow --no-folding btop kitty systemd
