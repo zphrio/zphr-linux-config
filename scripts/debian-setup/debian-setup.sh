@@ -288,7 +288,7 @@ brew install neovim
 section "Dotfiles"
 rm -f "$HOME/.bashrc"
 cd "$REPO_DIR"
-for app in bash fuzzel gtklock ideavim kanshi mimeapps swappy sway tmux vim waybar yazi; do
+for app in adhan bash fuzzel gtklock ideavim kanshi mimeapps swappy sway tmux vim waybar yazi; do
   stow "$app"
 done
 stow --no-folding btop kitty systemd
