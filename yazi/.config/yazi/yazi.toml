@@ -41,11 +41,15 @@ zathura = [
 okular = [
   { run = 'okular "$@"', orphan = true, desc = "Open with Okular" },
 ]
+calc = [
+  { run = 'localc "$@"', orphan = true, desc = "Open with LibreOffice Calc" },
+]
 
 [open]
 rules = [
   { url = "*/", use = ["edit", "open", "reveal"] },
   { url = "*.ai", use = ["inkscape", "open", "reveal"] },
+  { url = "*.csv", use = ["calc", "edit", "pager", "reveal"] },
   { url = "*.json", use = ["edit", "pager", "reveal"] },
   { mime = "text/*", use = ["edit", "pager", "reveal"] },
   { mime = "image/svg+xml", use = ["inkscape", "open", "edit", "reveal"] },
