@@ -233,6 +233,9 @@ for_window [app_id="blueman-manager"] floating enable, resize set 700 700, move 
 for_window [app_id="1password"] floating enable, resize set 700 700, move position center
 for_window [app_id="nm-connection-editor"] floating enable, resize set 700 700, move position center
 for_window [app_id="galculator"] floating enable, resize set 700 700, move position center
+for_window [app_id="mpv"] floating enable, resize set 1280 720, move position center
+# sxiv is XWayland, so it matches on class rather than app_id
+for_window [class="Sxiv"] floating enable, resize set 1280 720, move position center
 
 # Scratchpad Windows
 for_window [app_id="kitty"] move scratchpad, scratchpad show
