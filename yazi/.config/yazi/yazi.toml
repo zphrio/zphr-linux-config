@@ -41,16 +41,17 @@ zathura = [
 okular = [
   { run = 'okular %s', orphan = true, desc = "Open with Okular" },
 ]
-calc = [
-  { run = 'localc %s', orphan = true, desc = "Open with LibreOffice Calc" },
+office = [
+  { run = 'flatpak run org.onlyoffice.desktopeditors %s', orphan = true, desc = "Open with ONLYOFFICE" },
 ]
 
 [open]
 rules = [
   { url = "*/", use = ["edit", "open", "reveal"] },
   { url = "*.ai", use = ["inkscape", "open", "reveal"] },
-  { url = "*.csv", use = ["calc", "edit", "pager", "reveal"] },
+  { url = "*.csv", use = ["office", "edit", "pager", "reveal"] },
   { url = "*.json", use = ["edit", "pager", "reveal"] },
+  { mime = "text/rtf", use = ["office", "edit", "reveal"] },
   { mime = "text/*", use = ["edit", "pager", "reveal"] },
   { mime = "image/svg+xml", use = ["inkscape", "open", "edit", "reveal"] },
   { mime = "image/*", use = ["open", "reveal"] },
@@ -60,6 +61,12 @@ rules = [
   { mime = "application/json", use = ["edit", "pager", "reveal"] },
   { mime = "application/x-*", use = ["open", "reveal"] },
   { mime = "application/pdf", use = ["zathura", "okular", "open", "reveal"] },
+  { mime = "application/msword*", use = ["office", "open", "reveal"] },
+  { mime = "application/vnd.ms-word*", use = ["office", "open", "reveal"] },
+  { mime = "application/vnd.ms-excel*", use = ["office", "open", "reveal"] },
+  { mime = "application/vnd.ms-powerpoint*", use = ["office", "open", "reveal"] },
+  { mime = "application/vnd.openxmlformats-officedocument.*", use = ["office", "open", "reveal"] },
+  { mime = "application/vnd.oasis.opendocument.*", use = ["office", "open", "reveal"] },
   { mime = "*", use = ["open", "reveal"] },
 ]
 
