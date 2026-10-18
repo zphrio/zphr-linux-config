@@ -191,7 +191,6 @@ sudo apt install -y \
   blueman \
   tree \
   okular \
-  libreoffice \
   gh \
   git \
   kitty \
@@ -276,6 +275,7 @@ flatpak install -y --user \
   io.dbeaver.DBeaverCommunity \
   it.mijorus.gearlever \
   md.obsidian.Obsidian \
+  org.onlyoffice.desktopeditors \
   org.telegram.desktop
 
 section "Homebrew"
