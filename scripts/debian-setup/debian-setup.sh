@@ -157,6 +157,7 @@ sudo apt install -y \
   pipewire-audio \
   pulseaudio-utils \
   pavucontrol \
+  jq \
   avahi-daemon \
   acpi \
   acpid \
