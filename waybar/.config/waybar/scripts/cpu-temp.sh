@@ -7,6 +7,7 @@
 for d in /sys/class/hwmon/hwmon*; do
   case $(<"$d/name") in
     coretemp|k10temp|zenpower)
+      [ -r "$d/temp1_input" ] || continue
       temp=$(( $(<"$d/temp1_input") / 1000 ))
       if (( temp >= 80 )); then class=critical; elif (( temp >= 70 )); then class=warning; else class=normal; fi
       jq -cn --arg t "$temp" --arg c "$class" '{text: $t, percentage: ($t | tonumber), class: $c}'

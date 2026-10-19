@@ -113,10 +113,11 @@
       "transition-duration": 300,
       "transition-left-to-right": false
     },
-    "modules": ["cpu", "cpu#full", "memory", "custom/temp", "backlight"]
+    "modules": ["cpu", "cpu#full", "memory", "custom/temp", "custom/backlight"]
   },
   "cpu": {
     "format": "{icon}",
+    "interval": 2,
     "states": {
       "warning": 50,
       "critical": 85
@@ -141,10 +142,14 @@
     "format-icons": ["", "", "", "", ""],
     "tooltip": false
   },
-  "backlight": {
-    // "device": "acpi_video1",
-    "format": "{icon} {percent}%",
-    "format-icons": [""]
+  // Brightness via script so the module hides itself on machines without a backlight.
+  "custom/backlight": {
+    "exec": "~/.config/waybar/scripts/backlight.sh",
+    "interval": 2,
+    "format": " {}%",
+    "tooltip": false,
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-"
   },
   "battery": {
     "states": {
