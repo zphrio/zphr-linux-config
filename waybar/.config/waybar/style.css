@@ -91,26 +91,30 @@ window#waybar.empty #window {
     border: none;
 }
 
-/* ===== Center module ===== */
+/* ===== Center modules ===== */
 #clock {
     color: @text-primary;
     border: none;
 }
 
+/* Prayer sits right of the clock; pad to match the clock's " | " separator */
+#custom-adhan {
+    padding: 0 0 0 9px;
+}
+
 /* ===== Right-side modules ===== */
-#cpu,
+#cpu.full,
 #memory,
-#temperature,
+#custom-temp,
 #pulseaudio,
 #wireplumber,
-#wireplumber-microphone,
 #backlight,
 #battery,
 #tray,
 #power-profiles-daemon,
 #language,
-#keyboard-state,
 #network,
+#custom-tray-toggle,
 #custom-power {
     background-color: transparent;
     color: @text-primary;
@@ -119,10 +123,47 @@ window#waybar.empty #window {
     border-left: 1px solid @separator;
 }
 
+/* Stats drawer leader (the sparkline): its own cell, after the tray */
+#cpu:not(.full) {
+    background-color: transparent;
+    color: @text-dim;
+    margin: 0;
+    padding: 0 10px;
+    border-left: 1px solid @separator;
+}
+
+/* Sparkline as an indicator light: dim at idle, bright under load, red when pegged */
+#cpu.warning:not(.full) {
+    color: @text-primary;
+}
+
+#cpu.critical:not(.full) {
+    color: @critical;
+}
+
+/* Power profile and keyboard layout share one cell */
+#power-profiles-daemon {
+    padding: 0 4px 0 10px;
+}
+
+#language {
+    border-left: none;
+    padding: 0 10px 0 4px;
+}
+
 /* ===== Module States ===== */
 
+/* Stats drawer children: tighter than the top-level modules */
+#stats .drawer-child label {
+    padding: 0 6px;
+}
+
 /* Temperature */
-#temperature.critical {
+#custom-temp.warning {
+    color: @warning;
+}
+
+#custom-temp.critical {
     color: @critical;
 }
 
@@ -145,8 +186,7 @@ window#waybar.empty #window {
     color: @text-dark;
 }
 
-#wireplumber.muted,
-#wireplumber-microphone.muted {
+#wireplumber.muted {
     color: @text-dark;
 }
 

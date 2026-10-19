@@ -5,23 +5,18 @@
     "sway/workspaces",
     "sway/window",
     "sway/mode",
-    "sway/scratchpad",
-    "custom/adhan"
+    "sway/scratchpad"
   ],
   "modules-center": [
-    "clock"
+    "clock",
+    "custom/adhan"
   ],
   "modules-right": [
-    "cpu",
-    "memory",
-    "temperature",
+    "group/stats",
+    "group/tray-drawer",
     "pulseaudio",
-    "wireplumber#microphone",
-    "backlight",
-    "tray",
     "power-profiles-daemon",
     "sway/language",
-    "keyboard-state",
     "battery"
   ],
   // Modules configuration
@@ -29,15 +24,6 @@
     "disable-scroll": true,
     "all-outputs": true,
     "warp-on-scroll": false
-  },
-  "keyboard-state": {
-    "numlock": true,
-    "capslock": true,
-    "format": "{icon}",
-    "format-icons": {
-      "locked": " {name}",
-      "unlocked": ""
-    }
   },
   "sway/mode": {
     "format": "<span style=\"italic\">{}</span>"
@@ -56,8 +42,8 @@
     "exec": "~/.config/waybar/scripts/adhan.sh",
     "return-type": "json",
     "interval": 60,
-    "format": "| 🕌 {}",
-    "format-alt": "| 🕌 {alt}"
+    "format": "| {}",
+    "format-alt": "| {alt}"
   },
   "mpd": {
     "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
@@ -92,6 +78,20 @@
       "deactivated": ""
     }
   },
+  // Tray drawer: click the caret to slide the tray icons out; click again to hide them.
+  "group/tray-drawer": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "transition-left-to-right": false,
+      "click-to-reveal": true
+    },
+    "modules": ["custom/tray-toggle", "tray"]
+  },
+  "custom/tray-toggle": {
+    "format": "",
+    "tooltip": false
+  },
   "tray": {
     // "icon-size": 21,
     "spacing": 10
@@ -106,20 +106,38 @@
     "interval": 1,
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
+  // Stats drawer: the leader is a one-char CPU load sparkline; hover it to slide out the full readouts.
+  "group/stats": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "transition-left-to-right": false
+    },
+    "modules": ["cpu", "cpu#full", "memory", "custom/temp", "backlight"]
+  },
   "cpu": {
-    "format": " {usage}%",
+    "format": "{icon}",
+    "states": {
+      "warning": 50,
+      "critical": 85
+    },
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "tooltip": false,
+    "on-click": "kitty -e btop"
+  },
+  "cpu#full": {
+    "format": " {usage}%",
     "tooltip": false
   },
   "memory": {
-    "format": " {}%",
+    "format": " {used:0.1f}G",
     "tooltip": false
   },
-  "temperature": {
-    // "thermal-zone": 2,
-    "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
-    "critical-threshold": 80,
-    // "format-critical": "{icon} {temperatureC}°C",
-    "format": "{icon} {temperatureC}°C",
+  "custom/temp": {
+    "exec": "~/.config/waybar/scripts/cpu-temp.sh",
+    "return-type": "json",
+    "interval": 5,
+    "format": "{icon} {}°C",
     "format-icons": ["", "", "", "", ""],
     "tooltip": false
   },
@@ -170,11 +188,12 @@
     "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
   "pulseaudio": {
-    // "scroll-step": 1, // %, can be a float
-    "format": " {volume}%",
-    "format-bluetooth": "{icon} {volume}%",
-    "format-bluetooth-muted": " {icon}",
-    "format-muted": "",
+    "format": "{icon} {volume}% {format_source}",
+    "format-muted": "{icon} {format_source}",
+    "format-bluetooth": "{icon}  {volume}% {format_source}",
+    "format-bluetooth-muted": "{icon}  {format_source}",
+    "format-source": "",
+    "format-source-muted": "",
     "format-icons": {
       "headphone": "",
       "hands-free": "",
@@ -182,19 +201,18 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", ""]
+      "hdmi": "",
+      "default": ["", ""],
+      "default-muted": ""
     },
-    "on-click": "pavucontrol"
-  },
-  "wireplumber#microphone": {
-    "node-type": "Audio/Source",
-    "format": " {volume}%",
-    "format-muted": " muted",
+    "tooltip-format": "{desc}: {volume}%\n{source_desc}: {source_volume}%",
+    "scroll-step": 5,
     "on-click": "pavucontrol",
-    "scroll-step": 5
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
   },
   "sway/language": {
-    "format": " {}"
+    "format": "{shortDescription}"
   },
   "sway/window": {
     "format": "{app_id}",
