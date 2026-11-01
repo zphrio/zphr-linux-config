@@ -26,6 +26,13 @@ Use the format: `component: lowercase description`
 - Examples: `bash: add opencode aliases`, `nvim: add neotest-gradle for running Java tests`, `kitty: remap stack layout toggle`
 - For cross-cutting changes, use a descriptive component like `dotfiles` or name the primary package affected
 
+## Pull requests
+
+The repository only allows squash merges. The PR title becomes the commit subject and the PR description becomes the commit body, so:
+
+- Title the PR with the same `component: lowercase description` format.
+- Write the description as the final commit message: what changed and why, not a list of intermediate commits.
+
 ## Workflow
 
 - Research and verify before applying config changes — check docs or man pages rather than guessing option names or syntax.
