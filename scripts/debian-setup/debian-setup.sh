@@ -284,15 +284,16 @@ if ! command -v brew &> /dev/null; then
   NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
-brew install neovim
+brew install neovim anomalyco/tap/opencode-v2
 
 section "Dotfiles"
 rm -f "$HOME/.bashrc"
 cd "$REPO_DIR"
-for app in adhan bash fuzzel gtklock ideavim kanshi mimeapps swappy sway tmux vim waybar yazi; do
-  stow "$app"
+# shellcheck source=scripts/stow-packages.sh
+source "$REPO_DIR/scripts/stow-packages.sh"
+for app in "${STOW_PACKAGES[@]}"; do
+  stow_package "$app"
 done
-stow --no-folding btop kitty systemd
 kitten theme --reload-in=all Dracula
 
 section "Dotfiles Sync"

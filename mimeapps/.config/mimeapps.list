@@ -46,6 +46,3 @@ application/vnd.oasis.opendocument.text=org.onlyoffice.desktopeditors.desktop
 application/vnd.oasis.opendocument.spreadsheet=org.onlyoffice.desktopeditors.desktop
 application/vnd.oasis.opendocument.presentation=org.onlyoffice.desktopeditors.desktop
 text/csv=org.onlyoffice.desktopeditors.desktop
-
-# Claude Code
-x-scheme-handler/claude-cli=claude-code-url-handler.desktop
