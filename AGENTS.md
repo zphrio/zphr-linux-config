@@ -30,7 +30,7 @@ Use the format: `component: lowercase description`
 
 The repository only allows squash merges. The PR title becomes the commit subject and the PR description becomes the commit body, so:
 
-- Title the PR with the same `component: lowercase description` format.
+- Title the PR with the same `component: lowercase description` format, e.g. `dotfiles: add provider-neutral OpenCode agent setup`.
 - Write the description as the final commit message: what changed and why, not a list of intermediate commits.
 
 ## Workflow
