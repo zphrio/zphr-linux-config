@@ -40,13 +40,12 @@ if $STASHED; then
     fi
 fi
 
-# Load the updated package list after pulling. Agent metadata is never stowed.
-# shellcheck source=scripts/stow-packages.sh
-source "$REPO/scripts/stow-packages.sh"
-
-# Restow changed packages, including deletions and both sides of renames.
-while IFS= read -r pkg; do
-    if is_stow_package "$pkg" && [ -d "$pkg" ] && ! stow_package "$pkg" --restow; then
-        notify-send -u critical "Dotfiles sync" "stow --restow $pkg failed"
-    fi
-done < <(git diff --no-renames --name-only "$LOCAL" HEAD | cut -d/ -f1 | sort -u)
+# Restow only packages that got new files
+NEW_FILES=$(git diff --diff-filter=A --name-only "$LOCAL" HEAD)
+if [ -n "$NEW_FILES" ]; then
+    for pkg in $(echo "$NEW_FILES" | cut -d/ -f1 | sort -u); do
+        if [ -d "$pkg" ] && ! stow --restow "$pkg"; then
+            notify-send -u critical "Dotfiles sync" "stow --restow $pkg failed"
+        fi
+    done
+fi

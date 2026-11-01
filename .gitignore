@@ -3,4 +3,3 @@ tmux/.config/tmux/plugins/
 sway/.config/sway/outputs
 sway/.config/sway/workspaces
 kitty/.config/kitty/current-theme.conf
-__pycache__/

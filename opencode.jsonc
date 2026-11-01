@@ -4,7 +4,7 @@
   "commands": {
     "check-dotfiles": {
       "description": "Validate changed dotfiles and Stow behavior",
-      "template": "Inspect the current diff and validate the affected packages following AGENTS.md. Run relevant syntax checks and the Stow regression tests when sync or package handling changed. Use Stow simulation for affected packages; report conflicts without applying links. Do not run the system bootstrap. Additional scope: $ARGUMENTS"
+      "template": "Inspect the current diff and validate the affected packages following AGENTS.md. Run relevant syntax checks. Use Stow simulation for affected packages; report conflicts without applying links. Do not run the system bootstrap. Additional scope: $ARGUMENTS"
     },
     "review-dotfiles": {
       "description": "Review dotfiles for correctness and portability",
