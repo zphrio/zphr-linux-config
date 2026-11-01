@@ -4,7 +4,7 @@ Dotfiles repo managed with GNU Stow on Debian + sway.
 
 ## Structure
 
-Each top-level directory is a stow package (e.g., `kitty/`, `nvim/`, `sway/`). Files inside mirror `$HOME` paths — stow symlinks them into place. Root instructions, `opencode.jsonc`, agent directories, and `scripts/` are project metadata, not Stow packages.
+Each top-level directory is a stow package (e.g., `kitty/`, `nvim/`, `sway/`). Files inside mirror `$HOME` paths — stow symlinks them into place. Root instructions, agent directories, and `scripts/` are project metadata, not Stow packages.
 
 **Packages requiring `--no-folding`:** Some apps auto-generate files in their config directory. Without `--no-folding`, stow symlinks the whole directory and those files end up written into the repo.
 
@@ -41,6 +41,6 @@ The repository only allows squash merges. The PR title becomes the commit subjec
 ## Agent configuration
 
 - Keep these instructions usable by any coding agent. OpenCode V2 is the default integration.
-- Keep tracked OpenCode configuration, commands, and future skills provider-neutral: inherit the selected model rather than pinning a provider or model.
+- Keep any future tracked OpenCode configuration, commands, and skills provider-neutral: inherit the selected model rather than pinning a provider or model.
 - Keep credentials and personal provider preferences outside the repository. Use OpenCode's `/connect` and `/models` UI.
 - Put future portable skills in `.agents/skills/<name>/SKILL.md`, which OpenCode discovers automatically.
