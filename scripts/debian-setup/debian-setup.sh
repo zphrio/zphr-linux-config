@@ -278,6 +278,8 @@ flatpak install -y --user \
   md.obsidian.Obsidian \
   org.onlyoffice.desktopeditors \
   org.telegram.desktop
+# Let sandboxed apps read the user fontconfig rules (e.g. Arabic font preference)
+flatpak override --user --filesystem=xdg-config/fontconfig:ro
 
 section "Homebrew"
 if ! command -v brew &> /dev/null; then
@@ -289,7 +291,7 @@ brew install neovim
 section "Dotfiles"
 rm -f "$HOME/.bashrc"
 cd "$REPO_DIR"
-for app in adhan bash fuzzel gtklock ideavim kanshi mimeapps swappy sway tmux vim waybar yazi; do
+for app in adhan bash fontconfig fuzzel gtklock ideavim kanshi mimeapps swappy sway tmux vim waybar yazi; do
   stow "$app"
 done
 stow --no-folding btop kitty systemd
