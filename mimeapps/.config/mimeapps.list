@@ -49,3 +49,6 @@ text/csv=org.onlyoffice.desktopeditors.desktop
 
 # Claude Code
 x-scheme-handler/claude-cli=claude-code-url-handler.desktop
+
+# ChatGPT
+x-scheme-handler/codex=chatgpt.desktop
