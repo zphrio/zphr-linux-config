@@ -3,7 +3,7 @@
 ### Variables
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
-set $term kitty
+set $term kitty --single-instance
 set $menu "fuzzel"
 
 set $left h
@@ -65,10 +65,10 @@ bindsym $mod+space input "type:keyboard" xkb_switch_layout next
     bindsym $mod+Shift+a exec swaymsg input type:keyboard xkb_switch_layout 0 && gtklock
 
     # Terminal
-    bindsym $mod+t exec kitty
+    bindsym $mod+t exec $term
 
     # Terminal with yazi file manager
-    bindsym $mod+Shift+t exec kitty yazi
+    bindsym $mod+Shift+t exec $term yazi
 
     # Kill focused window
     bindsym $mod+q kill
@@ -243,6 +243,7 @@ for_window [app_id="kitty"] move scratchpad, scratchpad show
 
 
 
+exec $term --start-as=hidden
 exec lxpolkit
 exec nm-applet --indicator
 exec_always bash -c "killall -q swaync; while pgrep -x swaync >/dev/null; do sleep 0.1; done; swaync"
