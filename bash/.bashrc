@@ -40,7 +40,11 @@ HISTFILESIZE=2000
 shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+# (frozen output of `SHELL=/bin/sh lesspipe` to avoid a fork on every startup)
+if [ -x /usr/bin/lesspipe ]; then
+    export LESSOPEN="| /usr/bin/lesspipe %s"
+    export LESSCLOSE="/usr/bin/lesspipe %s %s"
+fi
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -113,9 +117,26 @@ nvm() {
 [ -f ~/.env_secrets ] && source ~/.env_secrets
 
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/zayed/.sdkman"
-[[ -s "/home/zayed/.sdkman/bin/sdkman-init.sh" ]] && source "/home/zayed/.sdkman/bin/sdkman-init.sh"
+# SDKMAN — lazy-loaded. Pre-seed PATH and *_HOME for every installed
+# candidate so java/gradle/etc. work instantly; only `sdk` itself
+# triggers sourcing the full init (~25 ms). Keep after the main PATH
+# export so candidate bins win, as the real init would.
+export SDKMAN_DIR="$HOME/.sdkman"
+if [ -d "$SDKMAN_DIR/candidates" ]; then
+    for _cand in "$SDKMAN_DIR"/candidates/*/current; do
+        [ -d "$_cand" ] || continue
+        _name=${_cand#"$SDKMAN_DIR"/candidates/}; _name=${_name%/current}
+        export "${_name^^}_HOME=$_cand"
+        [ -d "$_cand/bin" ] && PATH="$_cand/bin:$PATH"
+    done
+    unset _cand _name
+fi
+
+sdk() {
+    unset -f sdk
+    [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+    sdk "$@"
+}
 
 # 1Password CLI plugins
 source /home/zayed/.config/op/plugins.sh
