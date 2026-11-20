@@ -3,7 +3,7 @@ set -euo pipefail
 
 SOURCE="$HOME/zphr-second-brain"
 BACKUP_DIR="$HOME/zphr-second-brain-backup"
-KEEP=24
+KEEP=5
 
 TIMESTAMP=$(date +%Y-%m-%d_%H-%M-%S)
 BACKUP_FILE="$BACKUP_DIR/zphr-second-brain-$TIMESTAMP.tar.gz"
